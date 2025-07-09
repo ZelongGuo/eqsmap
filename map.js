@@ -19,7 +19,8 @@ var vecLayer = L.tileLayer(
   'https://t{s}.tianditu.gov.cn/DataServer?T=vec_w&x={x}&y={y}&l={z}&tk=072939ab9bd921a6fe546aea63310050',
   {
     subdomains: ['0','1','2','3','4','5','6','7'],
-    maxZoom: 18
+    maxZoom: 18,
+    attribution: '© Tianditu contributors'
   });
 
 var labelLayer = L.tileLayer(
