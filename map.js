@@ -20,7 +20,7 @@ var vecLayer = L.tileLayer(
   {
     subdomains: ['0','1','2','3','4','5','6','7'],
     maxZoom: 18,
-    attribution: '© Tianditu contributors'
+    attribution: '&copy; Zelong Guo, Basemap data: &copy; Tianditu (MapWorld) contributors'
   });
 
 var labelLayer = L.tileLayer(
