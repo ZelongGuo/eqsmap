@@ -15,10 +15,21 @@ var map = L.map('map').setView([35.0, 105.0], 5); // set initial center and scal
 // <script src="http://api.tianditu.gov.cn/api?v=4.0&tk=您的密钥" type="text/javascript"></script>
 
 
-L.tileLayer('https://t{s}.tianditu.gov.cn/DataServer?T=vec_w&x={x}&y={y}&l={z}&tk=072939ab9bd921a6fe546aea63310050', {
+var vecLayer = L.tileLayer(
+  'https://t{s}.tianditu.gov.cn/DataServer?T=vec_w&x={x}&y={y}&l={z}&tk=072939ab9bd921a6fe546aea63310050',
+  {
     subdomains: ['0','1','2','3','4','5','6','7'],
-    maxZoom: 18,
-    attribution: '天地图'
-}).addTo(map);
+    maxZoom: 18
+  });
+
+var labelLayer = L.tileLayer(
+  'https://t{s}.tianditu.gov.cn/DataServer?T=cva_w&x={x}&y={y}&l={z}&tk=072939ab9bd921a6fe546aea63310050',
+  {
+    subdomains: ['0','1','2','3','4','5','6','7'],
+    maxZoom: 18
+  });
+
+vecLayer.addTo(map);
+labelLayer.addTo(map); // labelLayer and vecLayer overlapping
 
 
