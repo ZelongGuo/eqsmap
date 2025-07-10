@@ -28,24 +28,25 @@
 
 // ---------------------------------------------------------------------------------------
 const tk = '072939ab9bd921a6fe546aea63310050'; // <<< Replace with actual Tianditu API key
+const attribution = 'Basemap: &copy; <a href="https://www.tianditu.gov.cn/" target="_blank" rel="noopener">Tianditu (MapWorld)</a>';
 
   // ----------- Define base map layers -----------------
   const vec = L.tileLayer(`https://t{s}.tianditu.gov.cn/DataServer?T=vec_w&x={x}&y={y}&l={z}&tk=${tk}`, {
     subdomains: ['0','1','2','3','4','5','6','7'],
     maxZoom: 18,
-    attribution: '&copy; Zelong Guo, Basemap: &copy; Tianditu (MapWorld) Vector'
+    attribution: `${attribution} Vector`
   });
 
   const img = L.tileLayer(`https://t{s}.tianditu.gov.cn/DataServer?T=img_w&x={x}&y={y}&l={z}&tk=${tk}`, {
     subdomains: ['0','1','2','3','4','5','6','7'],
     maxZoom: 18,
-    attribution: '&copy; Zelong Guo, Basemap: &copy; Tianditu (MapWorld) Satellite'
+    attribution: `${attribution} Satellite`
   });
 
   const ter = L.tileLayer(`https://t{s}.tianditu.gov.cn/DataServer?T=ter_w&x={x}&y={y}&l={z}&tk=${tk}`, {
     subdomains: ['0','1','2','3','4','5','6','7'],
     maxZoom: 18,
-    attribution: '&copy; Zelong Guo, Basemap: &copy; Tianditu (MapWorld) Terrain'
+    attribution: `${attribution} Terrain`
   });
 
   // ----------- Define annotation (label) layer -----------------
@@ -56,9 +57,11 @@ const tk = '072939ab9bd921a6fe546aea63310050'; // <<< Replace with actual Tiandi
 
 
   // ----------- Initialize map -----------------
-  const map = L.map('map', {
-    center: [35.0, 105.0],
-    zoom: 5,
+  // Note: eqmap must be globally accessible, or exported/imported via a module
+  // In a browser environment, define it directly in the global scope to be accessible to other scripts
+  const eqmap = L.map('map', {
+    center: [35.0, 105.0],  // China
+    zoom: 4,
     layers: [vec, label]  // Default layer: vector + labels
   });
 
@@ -76,7 +79,7 @@ const tk = '072939ab9bd921a6fe546aea63310050'; // <<< Replace with actual Tiandi
   const layerControl = L.control.layers(baseMaps, overlayMaps, {
     collapsed: false,
     position: 'topright'
-  }).addTo(map);
+  }).addTo(eqmap);
 
   // // ----------- Add title to control box -----------------
   // const controlDiv = document.querySelector('.leaflet-control-layers');
@@ -87,3 +90,5 @@ const tk = '072939ab9bd921a6fe546aea63310050'; // <<< Replace with actual Tiandi
   // title.style.background = 'rgba(255,255,255,0.9)';
   // title.style.borderBottom = '1px solid #ccc';
   // controlDiv.insertBefore(title, controlDiv.firstChild);
+
+
