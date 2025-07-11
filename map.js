@@ -27,7 +27,8 @@
 // labelLayer.addTo(map); // labelLayer and vecLayer overlapping
 
 // ---------------------------------------------------------------------------------------
-const tk = '072939ab9bd921a6fe546aea63310050'; // <<< Replace with actual Tianditu API key
+// const tk = '072939ab9bd921a6fe546aea63310050'; // blocked with my domian name
+const tk = '9110fadd0e38b69680d7ad6ea736e75a'; // for test with local host http.server
 const attribution = 'Basemap: &copy; <a href="https://www.tianditu.gov.cn/" target="_blank" rel="noopener">Tianditu (MapWorld)</a>';
 
   // ----------- Define base map layers -----------------
