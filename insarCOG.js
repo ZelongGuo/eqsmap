@@ -4,9 +4,13 @@ if (window.location.hostname === 'localhost' || window.location.hostname === '12
     // 本地开发环境
     geotiffUrl = 'http://localhost:8000/data/DINSAR_T072A_GACOS_3_cog.tif';
 } else {
-    // 部署到 GitHub Pages 等线上环境
-    geotiffUrl = 'data/DINSAR_T072A_GACOS_3_cog.tif';
+    // 部署到 GitHub Pages 等线上环境，使用绝对路径
+    // window.location.origin 是 https://<username>.github.io
+    // window.location.pathname 是 /<repo-name>/index.html 或 /<repo-name>/
+    const basePath = window.location.origin + window.location.pathname.replace(/\/[^/]*$/, '');
+    geotiffUrl = `${basePath}/data/DINSAR_T072A_GACOS_3_cog.tif`;
 }
+
 
 
 // 使用 parseGeoraster 加载 GeoTIFF/COG 文件
