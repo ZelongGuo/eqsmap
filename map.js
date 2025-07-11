@@ -60,7 +60,8 @@ const attribution = 'Basemap: &copy; <a href="https://www.tianditu.gov.cn/" targ
   // ----------- Initialize map -----------------
   // Note: eqmap must be globally accessible, or exported/imported via a module
   // In a browser environment, define it directly in the global scope to be accessible to other scripts
-  const eqmap = L.map('map', {
+  // const eqmap = L.map('map', {
+  let eqmap = L.map('map', {
     center: [35.0, 105.0],  // China
     zoom: 4,
     layers: [vec, label]  // Default layer: vector + labels
@@ -74,7 +75,7 @@ const attribution = 'Basemap: &copy; <a href="https://www.tianditu.gov.cn/" targ
   };
 
   const overlayMaps = {
-    "Labels": label,
+    "Contry/City": label,
   };
 
   const layerControl = L.control.layers(baseMaps, overlayMaps, {

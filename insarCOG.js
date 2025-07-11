@@ -1,4 +1,6 @@
+// 注意这里使用 let 声明全局变量，以便其他脚本（如 map.js）也可以访问
 let geotiffUrl;
+let geotiffLayer;  // 声明在 parseGeoraster 外部！
 
 if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
     // 本地开发环境
@@ -57,6 +59,9 @@ parseGeoraster(geotiffUrl).then(georaster => {
 
     // 调整地图视图以适应 GeoTIFF 的范围
     eqmap.fitBounds(geotiffLayer.getBounds());
+    //  添加到图层控制器
+    layerControl.addOverlay(geotiffLayer, "InSAR Deformation");
+ 
 }).catch(error => {
     console.error("加载GeoTIFF出错:", error);
 });
