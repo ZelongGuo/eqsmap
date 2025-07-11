@@ -20,7 +20,7 @@ parseGeoraster(geotiffUrl).then(georaster => {
     // 定义一个颜色比例尺来可视化形变值。
     // 假设形变值范围从 -50mm (蓝色) 到 +150mm (红色)。
     // 您需要根据您的实际数据范围调整这些值和颜色。
-    var scale = chroma.scale(['blue', 'cyan', 'green', 'yellow', 'red']).domain([-50, 0, 50, 100, 150]);
+    var scale = chroma.scale(['blue', 'cyan', 'green', 'yellow', 'red']).domain([-50, 0, 50, 70, 90]);
 
     // 创建 GeoRasterLayer
     var geotiffLayer = new GeoRasterLayer({
